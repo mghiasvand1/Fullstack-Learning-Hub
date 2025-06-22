@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<title>Django</title>
+	</head>
+	
+	<body>
+		<h1>
+			{{question.questionText}}
+		</h1>
+		
+		<ul>
+			{% for choice in question.choiceSet.all %}
+				<li>
+					{{ choice.choiceText }} -- {{ choice.votes }} vote{{ choice.votes|pluralize }}
+					<!-- We use the pluralize filter to change the suffix of a word. If a plural suffix isn’t specified pluralize defaults to ’s’.-->
+				</li>
+			{% endfor %}
+		</ul>
+		
+		<a href="{% url 'polls:detail' question.id %}">
+			Vote again ?  
+		</a>
+	</body>
+</html>

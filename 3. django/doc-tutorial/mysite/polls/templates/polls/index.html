@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		{% load static %}
+		<title>Django</title>
+		<link rel = 'stylesheet' type = 'text/css' href = '{% static "polls/style.css" %}'>
+		<!-- The static template tag generates the absolute URL of static files. -->
+	</head>
+	<body>
+		{% if lastestQuestionList %}
+			<ul>
+				{% for question in latestQuestionList %}
+					<li>
+						<a href="{% url 'polls:detail' question.id %}">{{question.questionText}}</a>
+					</li>
+				{% endfor %}
+			</ul>
+		{% else %}
+			<p>No polls are available .</p>
+		{% endif %}
+	</body>
+</html>
